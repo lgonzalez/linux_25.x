@@ -1,18 +1,21 @@
 #!/bin/bash
+# author: Luis Gonzalez (lgonzalez@ti.com)
 
 usage () {
-	echo "Usage: build_android.sh <targets> [ nand | cp-nand -t <target_dir>]
-targets:[ uboot | xloader | kernel | afs | all ]
+	echo "Usage: build_android.sh <targets> [ nand | cp-nand -t <target_dir> | eclair]
+targets:[ uboot | xloader | kernel | afs | gfx | all ]
 	uboot: builds u-boot
 	xloader: builds x-loader
 	kernel: builds kernel and its modules
 	afs: builds Android File System
+	gfx: builds GFX DDK
 	all: builds all of the above targets
 OPTIONAL:
 	nand: creates NAND images and copies them to TARGET_DIR
 	cp-nand: only copies NAND images to TARGET_DIR
 target_dir:
-	directory path where you want binaries to be stored"
+	directory path where you want binaries to be stored
+	eclair: copies files to filesystem for eclair"
 	exit 64 # command line usage error
 }
 
@@ -32,6 +35,7 @@ until [ -z "$1" ]; do
 		xloader=1
 		kernel=1
 		afs=1
+		gfx=1
 		;;
 	gfx) gfx=1;;
 	nand)
@@ -123,6 +127,29 @@ cp -f vendor/ti/zoom2/buildspec.mk.default buildspec.mk
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/AFS.log make -j4 >&1 |tee $MYDROID/logs/AFS.log
 fi
 
+# Build GFX DDK
+if [ -n "$gfx" ]; then
+	if [ -d GFX_Linux_DDK ]; then
+		export CC_PATH=$TOOL_CHAIN_HOME
+		export KERNELDIR=$MYDROID/kernel/android-2.6.29
+		export ANDROID_ROOT=$MYDROID
+		export ANDROID_PRODUCT=zoom2
+		cd GFX_Linux_DDK
+		./build_DDK.sh --build clobber
+		./build_DDK.sh --build release 2>&1 |tee gfx_build.log
+		if cat gfx_build.log |grep rc.pvr &> /dev/null; then
+			export DISCIMAGE=$MYDROID/out/target/product/zoom2
+			./build_DDK.sh --install release
+		else
+			echo "GFX build was unsuccessful :("
+			exit 1
+		fi
+	else
+		echo "GFX_Linux_DDK directory does not exist. Please get the correct directory from ClearCase"
+		exit 1
+	fi
+fi
+
 # Creates NAND images
 if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cd $MYDROID/out/target/product/zoom2
@@ -132,8 +159,12 @@ if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' root/init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' root/init.rc
 	sed -i  's/#    mount yaffs2 mtd@system \/system$/mount yaffs2 mtd@system \/system/' root/init.rc
-	sed -i 's/#    mount yaffs2 mtd@userdata \/data nosuid nodev/mount yaffs2 mtd@userdata \/data nosuid nodev/' root/init.rc
-	sed -i 's/#    mount yaffs2 mtd@cache \/cache nosuid nodev/mount yaffs2 mtd@cache \/cache nosuid nodev/' root/init.rc
+	sed -i 's/#    mount yaffs2 mtd@userdata \/data nosuid nodev/     mount yaffs2 mtd@userdata \/data nosuid nodev/' root/init.rc
+	sed -i 's/#    mount yaffs2 mtd@cache \/cache nosuid nodev/     mount yaffs2 mtd@cache \/cache nosuid nodev/' root/init.rc
+	if [ -n "$gfx" ]; then echo "# Start of SGX driver
+service pvrsvr /system/bin/sh /rc.pvr start
+user root
+oneshot" >> root/init.rc; fi	
 
 	if [ -z "$eclair" ]; then
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan* root
@@ -148,16 +179,6 @@ if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 elif [ ! -d out/target/product/zoom2 ]; then
 	echo "You have not built AFS. Please build AFS to create NAND images"
 	exit 1
-fi
-
-# Build GFX DDK
-if [ -n "$gfx" ]; then
-export CC_PATH=$CROSS_COMPILE
-export KERNELDIR=$MYDROID/kernel/android-2.6.29
-export ANDROID_ROOT=$MYDROID
-export ANDROID_PRODUCT=zoom2
-cd GFX_Linux_DDK
-./build_DDK.sh --build release
 fi
 
 # Copies NAND binaries and filesystem
