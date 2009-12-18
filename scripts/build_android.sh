@@ -183,7 +183,11 @@ fi
 
 # Copies NAND binaries and filesystem
 if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
-	if [ ! -d $TARGET_DIR/myfs ]; then mkdir -p $TARGET_DIR/myfs; fi
+	if [ ! -d $TARGET_DIR/myfs ]; then 
+		mkdir -p $TARGET_DIR/myfs
+	else
+		rm -rf $TARGET_DIR/myfs/* 
+	fi
 	echo "Copying binaries to $TARGET_DIR"
 	cp -fv $MYDROID/out/target/product/zoom2/*.img $TARGET_DIR
 	cp -fv $MYDROID/bootable/bootloader/u-boot/u-boot.bin $TARGET_DIR
