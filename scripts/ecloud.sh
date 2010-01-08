@@ -84,9 +84,9 @@ export PATH=$MYDROID/bootable/bootloader/u-boot/tools:$PATH:/opt/ecloud/i686_Lin
 EC_MANAGER=10.87.226.192
 EC_CLASS=android
 EC_MAXAGENTS=12
-#EC_ROOT=$JAVA_HOME/bin:/home/lgonzalez/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
-EC_ROOT=/home/lgonzalez/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison
-EC_HISTORYDIR=/home/lgonzalez/emake_history
+#EC_ROOT=$JAVA_HOME/bin:/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+EC_ROOT=/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison
+EC_HISTORYDIR=/home/$USER/emake_history
 EC_BUILD_LBL=$label
 
 # U-BOOT build block
