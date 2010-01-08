@@ -1,0 +1,16 @@
+This repository contains scripts to automate 
+some tasks for TI Linux_25.x program:
+
+***** android_setenv.sh *****
+This scripts contains environment variables required for
+building the different components for L25.x
+
+***** build_android.sh *****
+It builds the different components of L25.x (u-boot, x-loader
+kernel, kernel modules, wifi, android filesystem & gfx)
+
+***** ecloud.sh *****
+Uses Electric Cloud build accelerator to complete the compilation
+of a L25.x build. Currently supports u-boot, x-loader, kernel
+and Android filesystem.
+
