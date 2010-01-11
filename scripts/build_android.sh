@@ -135,6 +135,7 @@ if [ -n "$gfx" ]; then
 		export ANDROID_ROOT=$MYDROID
 		export ANDROID_PRODUCT=zoom2
 		cd GFX_Linux_DDK
+		chmod +x build_DDK.sh
 		./build_DDK.sh --build clobber
 		./build_DDK.sh --build release 2>&1 |tee gfx_build.log
 		if cat gfx_build.log |grep rc.pvr &> /dev/null; then
@@ -202,7 +203,7 @@ if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' init.rc
 	echo "Done!"
-else
+elif [ ! -d $MYDROID/out/target/product/zoom2 ]; then
 	echo "You have not built AFS. Please build AFS to create NAND images"
 	exit 1
 fi
