@@ -1,0 +1,141 @@
+EMAKEDATA 6
+
+# This file is generated automatically by Electric Make.
+# Do not edit the contents by hand.
+#
+# ROOTS:
+#   /data/lgonzalez/L25.x/builds/L25.14/mydroid
+#   /home/x0068941/bin
+#   /usr/bin
+#   /usr/include
+#   /usr/lib
+#   /usr/local/csl/arm-2008q3
+#   /usr/sbin
+#   /usr/share/bison
+
+makes:
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../stad/build/linux
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../platforms/os/common/build/linux
+0 0 2 kernel/android-2.6.29
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../platforms/os/linux/build
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../external_drivers/zoom2/Linux/sdio
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../stad/build/linux
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../platforms/os/common/build/linux
+0 0 1 kernel/android-2.6.29
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../platforms/os/linux/build
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/../../../external_drivers/zoom2/Linux/sdio
+
+jobs:
+0 0 0 ../../../stad/build/linux/libestadrv.a
+1 0 0 ../../../stad/build/linux/libestadrv.a
+0 0 0 ../../../platforms/os/common/build/linux/libuadrv.a
+0 0 0 ../../../../../platforms/os/common/build/linux/libuadrv.a
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/tiwlan_drv.o
+0 0 0 ../../../platforms/os/linux/build/tiwlan_drv_stub.o
+0 0 0 ../../../../platforms/os/linux/build/tiwlan_drv_stub.o
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/build/tiwlan_drv.o
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13_new/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13_new/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/home/lgonzalez/mnt/linux/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/home/lgonzalez/mnt/linux/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/media/integration/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/media/integration/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 2 system/wlan/ti/wilink_6_1/stad/build/linux/../../../stad/src/Ctrl_Interface/CmdHndlr.o
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/../../../../../stad/src/Ctrl_Interface/CmdHndlr.o
+1 0 0 ../../../../../platforms/os/common/build/linux/libuadrv.a
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/../../../../../platforms/os/common/src/osRgstry.o
+0 0 0 modules
+0 0 2 system/wlan/ti/wilink_6_1/platforms/os/linux/build/tiwlan_drv.ko
+1 0 0 ../../../../platforms/os/linux/build/tiwlan_drv_stub.o
+0 0 0 sdio
+0 0 0 all
+0 0 2 system/wlan/ti/wilink_6_1/external_drivers/zoom2/Linux/sdio/sdio.ko
+1 0 0 all
+0 0 0 .depend
+0 0 0 ../../../platforms/os/linux/tiwlan_drv.ko
+0 0 2 system/wlan/ti/wilink_6_1/stad/build/linux/../../../stad/src/Ctrl_Interface/DrvMain.o
+0 0 2 system/wlan/ti/wilink_6_1/stad/build/linux/../../../stad/src/Ctrl_Interface/EvHandler.o
+0 0 0 _module_/home/lgonzalez/mnt/linux/25.13_new/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.14/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/tiwlan_drv.o
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.14/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/build/tiwlan_drv.o
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.13_android-1.6_r1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.13_android-1.6_r1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.14/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 1 system/wlan/ti/wilink_6_1/stad/build/linux/../../../stad/src/Ctrl_Interface/CmdHndlr.o
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/../../../../../stad/src/Ctrl_Interface/CmdHndlr.o
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/../../../../../platforms/os/common/src/osRgstry.o
+0 0 1 system/wlan/ti/wilink_6_1/platforms/os/linux/build/tiwlan_drv.ko
+0 0 1 system/wlan/ti/wilink_6_1/external_drivers/zoom2/Linux/sdio/sdio.ko
+0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.13_android-1.6_r1/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/home/lgonzalez/mnt/linux/25E.15/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/media/integration/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+
+serial-deps:
+4 0 0 1 1 16 8 0 2 2 3 3 4 3 -1  8 0 2 2 3 3 4 3 5  8 0 6 4 7 3 8 3 -1  8 0 6 4 7 3 8 3 9  8 0 2 2 3 3 10 3 -1  8 0 2 2 3 3 10 3 5  8 0 6 4 7 3 11 3 -1  8 0 6 4 7 3 11 3 9  8 0 2 2 3 3 12 3 -1  8 0 2 2 3 3 12 3 5  8 0 6 4 7 3 13 3 -1  8 0 6 4 7 3 13 3 9  8 0 2 2 3 3 14 3 -1  8 0 2 2 3 3 14 3 5  8 0 6 4 7 3 15 3 -1  8 0 6 4 7 3 15 3 9  
+8 0 0 1 0 3 16 3 17 3 8 0 2 2 3 3 4 3 -1  8 0 2 2 3 3 4 3 18  4 0 0 1 1  
+8 0 2 2 3 3 4 3 18 1 4 0 2 2 19  
+4 0 2 2 19 8 8 0 6 4 7 3 8 3 -1  8 0 6 4 7 3 8 3 9  8 0 6 4 7 3 11 3 -1  8 0 6 4 7 3 11 3 9  8 0 6 4 7 3 13 3 -1  8 0 6 4 7 3 13 3 9  8 0 6 4 7 3 15 3 -1  8 0 6 4 7 3 15 3 9  
+8 0 2 2 3 3 4 3 20 1 4 0 2 2 19  
+8 0 6 4 7 3 21 3 22 1 4 0 6 4 23  
+8 0 24 5 25 3 21 3 26 1 4 0 24 5 27  
+8 0 0 1 0 3 16 3 -2 1 4 0 0 1 1  
+8 0 6 4 7 3 8 3 -2 1 4 0 6 4 23  
+2 0 28 11 2 0 0  4 0 0 1 28  4 0 0 1 0  4 0 0 1 -4  4 0 0 1 1  2 0 2  4 0 2 2 28  4 0 2 2 3  4 0 2 2 -4  4 0 2 2 19  2 0 29  
+8 0 0 1 0 3 16 3 30 1 4 0 0 1 1  
+8 0 0 1 0 3 16 3 31 1 4 0 0 1 1  
+8 0 0 1 0 3 32 3 17 2 8 0 2 2 3 3 10 3 -1  8 0 2 2 3 3 10 3 18  
+8 0 2 2 3 3 10 3 18 1 4 0 2 2 19  
+8 0 2 2 3 3 10 3 20 1 4 0 2 2 19  
+8 0 0 1 0 3 32 3 -2 1 4 0 0 1 1  
+8 0 6 4 7 3 11 3 -2 1 4 0 6 4 23  
+4 6 0 7 1 16 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 34  8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 34  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 34  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 34  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  
+8 6 0 7 0 9 43 9 44 2 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 45  
+8 6 2 8 3 9 33 9 45 1 4 6 2 8 19  
+4 6 2 8 19 8 8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  
+8 6 2 8 3 9 33 9 46 1 4 6 2 8 19  
+8 6 6 10 7 9 21 9 47 1 4 6 6 10 23  
+8 6 24 11 25 9 21 9 48 1 4 6 24 11 27  
+8 6 0 7 0 9 43 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 35 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 49 9 44 2 8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 45  
+8 6 2 8 3 9 37 9 45 1 4 6 2 8 19  
+8 6 2 8 3 9 37 9 46 1 4 6 2 8 19  
+8 6 0 7 0 9 49 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 38 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 50 9 44 2 8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 45  
+8 6 2 8 3 9 39 9 45 1 4 6 2 8 19  
+8 6 2 8 3 9 39 9 46 1 4 6 2 8 19  
+8 6 0 7 0 9 50 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 40 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 51 9 44 2 8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 45  
+8 6 2 8 3 9 41 9 45 1 4 6 2 8 19  
+8 6 2 8 3 9 41 9 46 1 4 6 2 8 19  
+8 6 0 7 0 9 51 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 42 9 -2 1 4 6 6 10 23  
+8 0 0 1 0 3 52 3 17 2 8 0 2 2 3 3 12 3 -1  8 0 2 2 3 3 12 3 18  
+8 0 2 2 3 3 12 3 18 1 4 0 2 2 19  
+8 0 2 2 3 3 12 3 20 1 4 0 2 2 19  
+8 0 0 1 0 3 52 3 -2 1 4 0 0 1 1  
+8 0 6 4 7 3 13 3 -2 1 4 0 6 4 23  
+8 0 0 1 0 3 53 3 17 2 8 0 2 2 3 3 14 3 -1  8 0 2 2 3 3 14 3 18  
+8 0 2 2 3 3 14 3 18 1 4 0 2 2 19  
+8 0 2 2 3 3 14 3 20 1 4 0 2 2 19  
+8 0 0 1 0 3 53 3 -2 1 4 0 0 1 1  
+8 0 6 4 7 3 15 3 -2 1 4 0 6 4 23  
+
+prereqs:
+
+prereq-deps:

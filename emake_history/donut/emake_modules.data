@@ -1,0 +1,32 @@
+EMAKEDATA 6
+
+# This file is generated automatically by Electric Make.
+# Do not edit the contents by hand.
+#
+# ROOTS:
+#   /data/lgonzalez/L25.x/builds/L25.14/mydroid
+#   /home/x0068941/bin
+#   /usr/bin
+#   /usr/include
+#   /usr/lib
+#   /usr/local/csl/arm-2008q3
+#   /usr/sbin
+#   /usr/share/bison
+
+makes:
+0 0 2 kernel/android-2.6.29
+0 0 1 kernel/android-2.6.29
+
+jobs:
+0 0 0 include/config/kernel.release
+0 0 0 include/asm
+0 0 0 scripts_basic
+0 0 0 scripts
+
+serial-deps:
+2 0 0 3 2 0 1  2 0 2  2 0 3  
+2 1 0 3 2 1 1  2 1 2  2 1 3  
+
+prereqs:
+
+prereq-deps:

@@ -1,0 +1,53 @@
+EMAKEDATA 6
+
+# This file is generated automatically by Electric Make.
+# Do not edit the contents by hand.
+#
+# ROOTS:
+#   /data/lgonzalez/L25.x/builds/L25.14/mydroid
+#   /home/x0068941/bin
+#   /usr/bin
+#   /usr/include
+#   /usr/lib
+#   /usr/local/csl/arm-2008q3
+#   /usr/sbin
+#   /usr/share/bison
+
+makes:
+1 0 2 kernel/android-2.6.29
+0 0 2 kernel/android-2.6.29
+1 0 1 kernel/android-2.6.29
+0 0 1 kernel/android-2.6.29
+
+jobs:
+0 0 0 include/config/kernel.release
+0 0 0 include/asm
+0 0 0 scripts_basic
+0 0 0 scripts
+0 0 0 prepare0
+0 0 0 arch/arm/kernel/asm-offsets.s
+1 0 0 prepare0
+0 0 0 include/asm/asm-offsets.h
+0 0 0 include/linux/bounds.h
+0 0 0 kernel/bounds.s
+0 0 0 .tmp_vmlinux1
+0 0 0 init/built-in.o
+1 0 0 .tmp_vmlinux1
+
+serial-deps:
+2 0 0 3 2 0 1  2 0 2  2 0 3  
+4 0 4 1 5 1 4 0 6 1 -1  
+4 0 4 1 7 1 4 0 6 1 -1  
+4 0 4 1 8 1 4 0 6 1 -1  
+4 0 4 1 9 1 4 0 6 1 -1  
+4 0 10 1 11 1 2 0 12  
+2 2 0 3 2 2 1  2 2 2  2 2 3  
+4 2 4 3 5 1 4 2 6 3 -1  
+4 2 4 3 7 1 4 2 6 3 -1  
+4 2 4 3 8 1 4 2 6 3 -1  
+4 2 4 3 9 1 4 2 6 3 -1  
+4 2 10 3 11 1 2 2 12  
+
+prereqs:
+
+prereq-deps:

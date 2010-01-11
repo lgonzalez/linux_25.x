@@ -1,0 +1,90 @@
+EMAKEDATA 6
+
+# This file is generated automatically by Electric Make.
+# Do not edit the contents by hand.
+#
+# ROOTS:
+#   /data/lgonzalez/L25.x/builds/L25.14/mydroid
+#   /home/x0068941/bin
+#   /usr/bin
+#   /usr/include
+#   /usr/lib
+#   /usr/local/csl/arm-2008q3
+#   /usr/sbin
+#   /usr/share/bison
+
+makes:
+0 0 2 bootable/bootloader/u-boot
+0 0 2 bootable/bootloader/u-boot/cpu/omap3
+0 0 2 bootable/bootloader/u-boot/lib_arm
+0 0 2 bootable/bootloader/u-boot/common
+1 0 2 bootable/bootloader/u-boot/cpu/omap3
+1 0 2 bootable/bootloader/u-boot/lib_arm
+1 0 2 bootable/bootloader/u-boot/common
+0 0 2 bootable/bootloader/u-boot/post
+0 0 2 bootable/bootloader/u-boot/post/cpu
+0 0 2 bootable/bootloader/u-boot/tools
+0 0 1 bootable/bootloader/u-boot
+0 0 1 bootable/bootloader/u-boot/cpu/omap3
+0 0 1 bootable/bootloader/u-boot/lib_arm
+0 0 1 bootable/bootloader/u-boot/common
+1 0 1 bootable/bootloader/u-boot/cpu/omap3
+1 0 1 bootable/bootloader/u-boot/common
+1 0 1 bootable/bootloader/u-boot/lib_arm
+0 0 1 bootable/bootloader/u-boot/post
+0 0 1 bootable/bootloader/u-boot/post/cpu
+0 0 1 bootable/bootloader/u-boot/tools
+0 0 2 bootable/bootloader/u-boot/examples
+0 0 1 bootable/bootloader/u-boot/examples
+
+jobs:
+0 0 0 version
+0 0 0 cpu/omap3/start.o
+0 0 0 cpu/omap3/libomap3.a
+0 0 0 start.o
+0 0 0 lowlevel_init.o
+0 0 0 lib_arm/libarm.a
+0 0 0 board.o
+0 0 0 common/libcommon.a
+0 0 0 lcd.o
+0 0 0 .depend
+0 0 0 post
+0 0 0 libpost.a
+0 0 0 post/libpost.a
+0 0 0 post/cpu
+0 0 0 libcpu.a
+0 0 0 post/cpu/libcpu.a
+0 0 0 tools
+0 0 0 envcrc
+0 0 0 ../tools/envcrc
+0 0 0 environment.o
+0 0 0 depend
+0 0 0 examples
+
+serial-deps:
+2 0 0 12 2 0 1  4 0 2 1 3  4 0 2 1 4  4 0 5 2 6  4 0 7 3 8  4 0 2 1 9  4 0 2 4 3  4 0 2 4 4  4 0 5 2 9  4 0 7 3 9  4 0 5 5 6  4 0 7 6 8  
+2 0 1 4 4 0 2 1 -1  4 0 2 1 3  4 0 2 4 -1  4 0 2 4 3  
+4 0 10 7 11 2 2 0 12  2 0 -4  
+4 0 13 8 14 2 2 0 15  2 0 -4  
+4 0 16 9 17 4 4 0 7 3 18  4 0 7 3 19  4 0 7 6 18  4 0 7 6 19  
+4 0 10 7 -2 1 4 0 12 7 -1  
+4 0 13 8 -2 1 4 0 15 8 -1  
+2 10 0 12 2 10 1  4 10 2 11 3  4 10 2 11 4  4 10 5 12 6  4 10 7 13 8  4 10 2 11 9  4 10 2 14 3  4 10 2 14 4  4 10 7 13 9  4 10 7 15 8  4 10 5 12 9  4 10 5 16 6  
+2 10 1 4 4 10 2 11 -1  4 10 2 11 3  4 10 2 14 -1  4 10 2 14 3  
+4 10 10 17 11 2 2 10 12  2 10 -4  
+4 10 13 18 14 2 2 10 15  2 10 -4  
+4 10 16 19 17 4 4 10 7 13 18  4 10 7 13 19  4 10 7 15 18  4 10 7 15 19  
+4 10 10 17 -2 1 4 10 12 17 -1  
+4 10 13 18 -2 1 4 10 15 18 -1  
+4 0 20 7 9 2 4 0 10 7 -1  4 0 12 7 -1  
+4 0 20 20 9 1 4 0 21 20 -1  
+4 0 20 8 9 2 4 0 13 8 -1  4 0 15 8 -1  
+4 0 20 9 -2 1 4 0 16 9 -1  
+4 10 20 17 9 2 4 10 10 17 -1  4 10 12 17 -1  
+4 10 20 21 9 1 4 10 21 21 -1  
+4 10 20 18 9 2 4 10 13 18 -1  4 10 15 18 -1  
+4 10 20 19 -2 1 4 10 16 19 -1  
+
+prereqs:
+
+prereq-deps:
