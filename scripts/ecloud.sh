@@ -85,9 +85,16 @@ EC_MANAGER=10.87.226.192
 EC_CLASS=android
 EC_MAXAGENTS=12
 #EC_ROOT=$JAVA_HOME/bin:/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
-EC_ROOT=/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison
+EC_ROOT=/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison:/etc/alternatives
 EC_HISTORYDIR=/home/$USER/emake_history
 EC_BUILD_LBL=$label
+EC_OPTS="
+--emake-cm=$EC_MANAGER \
+--emake-class=$EC_CLASS \
+--emake-maxagents=$EC_MAXAGENTS \
+--emake-build-label=$EC_BUILD_LBL \
+--emake-root=$EC_ROOT \
+--emake-annodetail=basic,history,file"
 
 # U-BOOT build block
 if [ -n "$uboot" ]; then
@@ -95,13 +102,8 @@ cd $MYDROID/bootable/bootloader/u-boot
 make clean
 make omap3430zoom2_config
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_uboot.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_uboot.xml \
---emake-annodetail=basic \
 --emake-historyfile=$EC_HISTORYDIR/emake_uboot.data $@ 2>&1 |tee $MYDROID/logs/emake_uboot.out
 fi
 
@@ -111,13 +113,8 @@ cd $MYDROID/bootable/bootloader/x-loader
 make clean
 make omap3430zoom2_config
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_xloader.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_xloader.xml \
---emake-annodetail=basic \
 --emake-historyfile=$EC_HISTORYDIR/emake_xloader.data $@ ift 2>&1 |tee $MYDROID/logs/emake_xloader.out
 fi
 
@@ -127,23 +124,13 @@ cd $MYDROID/kernel/android-2.6.29
 make clean
 make zoom2_defconfig
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_kernel.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_kernel.xml \
---emake-annodetail=basic \
 --emake-historyfile=$EC_HISTORYDIR/emake_kernel.data $@ uImage 2>&1 |tee $MYDROID/logs/emake_kernel.out
 
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_modules.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_modules.xml \
---emake-annodetail=basic \
 --emake-historyfile=$EC_HISTORYDIR/emake_modules.data $@ modules 2>&1 |tee $MYDROID/logs/emake_modules.out
 fi
 
@@ -155,25 +142,15 @@ export HOST_PLATFORM=zoom2
 export KERNEL_DIR=$MYDROID/kernel/android-2.6.29
 make clean
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_wifi.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build.xml \
---emake-annodetail=basic \
 --emake-historyfile=$EC_HISTORYDIR/emake_wifi.data $@ 2>&1 |tee $MYDROID/logs/emake_wifi.out
 
 cd $MYDROID
 cp -f vendor/ti/zoom2/buildspec.mk.default buildspec.mk
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_AFS.out emake \
---emake-cm=$EC_MANAGER \
---emake-class=$EC_CLASS \
---emake-maxagents=$EC_MAXAGENTS \
---emake-build-label=$EC_BUILD_LBL \
---emake-root=$EC_ROOT:/etc/alternatives \
+$EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_AFS.xml \
---emake-annodetail=basic,history,file \
 --emake-annoupload=1 \
 --emake-historyfile=$EC_HISTORYDIR/emake_AFS.data $@ 2>&1 |tee $MYDROID/logs/emake_AFS.out
 fi
