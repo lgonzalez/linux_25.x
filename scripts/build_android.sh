@@ -137,7 +137,7 @@ if [ -n "$gfx" ]; then
 		cd GFX_Linux_DDK
 		chmod +x build_DDK.sh
 		./build_DDK.sh --build clobber
-		./build_DDK.sh --build release 2>&1 |tee gfx_build.log
+		/usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/gfx_build.log ./build_DDK.sh --build release 2>&1 |tee gfx_build.log
 		if cat gfx_build.log |grep rc.pvr &> /dev/null; then
 			export DISCIMAGE=$MYDROID/out/target/product/zoom2
 			./build_DDK.sh --install release
@@ -177,7 +177,7 @@ oneshot" >> root/init.rc; fi
 	fi
 
 	cd $MYDROID; make -j4
-elif [ ! -d out/target/product/zoom2 ]; then
+elif [ ! -d out/target/product/zoom2 ] && [ -n "$nand" ]; then
 	echo "You have not built AFS. Please build AFS to create NAND images"
 	exit 1
 fi
@@ -203,7 +203,7 @@ if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' init.rc
 	echo "Done!"
-elif [ ! -d $MYDROID/out/target/product/zoom2 ]; then
+elif [ ! -d $MYDROID/out/target/product/zoom2 ] && [ -n "$cpnand" ]; then
 	echo "You have not built AFS. Please build AFS to create NAND images"
 	exit 1
 fi
