@@ -195,11 +195,16 @@ if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cp -fv $MYDROID/bootable/bootloader/x-loader/MLO $TARGET_DIR
 	cp -f $MYDROID/kernel/android-2.6.29/arch/arm/boot/*Image $TARGET_DIR
 	cd $MYDROID/out/target/product/zoom2
+	echo "Creating filesystem for SD card in $tARGET_DIR/myfs"
 	cp -rf root/* $TARGET_DIR/myfs
 	cp -rf system $TARGET_DIR/myfs
 	cp -rf data $TARGET_DIR/myfs
 	cd $TARGET_DIR/myfs
-	cp -fv init.omapzoom2.rc init.rc
+	if [ -n "$eclair" ]; then
+		cp -f $MYDROID/vendor/ti/zoom2/omapzoom2-mmc.rc init.rc
+	else
+		cp -f init.omapzoom2.rc init.rc
+	fi
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' init.rc
 	echo "Done!"
