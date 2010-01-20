@@ -99,7 +99,7 @@ EC_OPTS="
 # U-BOOT build block
 if [ -n "$uboot" ]; then
 cd $MYDROID/bootable/bootloader/u-boot
-make clean
+make distclean
 make omap3430zoom2_config
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_uboot.out emake \
 $EC_OPTS \
@@ -110,7 +110,7 @@ fi
 # X-LOADER build block
 if [ -n "$xloader" ]; then
 cd $MYDROID/bootable/bootloader/x-loader
-make clean
+make distclean
 make omap3430zoom2_config
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_xloader.out emake \
 $EC_OPTS \
@@ -121,7 +121,7 @@ fi
 # KERNEL build block
 if [ -n "$kernel" ]; then
 cd $MYDROID/kernel/android-2.6.29
-make clean
+make distclean
 make zoom2_defconfig
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_kernel.out emake \
 $EC_OPTS \
