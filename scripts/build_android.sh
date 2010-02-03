@@ -154,8 +154,10 @@ fi
 # Creates NAND images
 if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cd $MYDROID/out/target/product/zoom2
+	echo "Removing NAND files... "
 	rm -fv *.img
 	rm -fv obj/PACKAGING/systemimage_unopt_intermediates/system.img
+	echo "Modifying init.rc for NAND boot"
 	cp -fv root/init.omapzoom2.rc root/init.rc
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' root/init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' root/init.rc
@@ -193,9 +195,11 @@ if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cp -fv $MYDROID/out/target/product/zoom2/*.img $TARGET_DIR
 	cp -fv $MYDROID/bootable/bootloader/u-boot/u-boot.bin $TARGET_DIR
 	cp -fv $MYDROID/bootable/bootloader/x-loader/MLO $TARGET_DIR
-	cp -f $MYDROID/kernel/android-2.6.29/arch/arm/boot/*Image $TARGET_DIR
+	cp -fv $MYDROID/kernel/android-2.6.29/arch/arm/boot/*Image $TARGET_DIR
+	cp -fv $MYDROID/bootable/bootloader/u-boot/tools/mkimage $TARGET_DIR
+	cp -fv $MYDROID/out/host/linux-x86/bin/fastboot $TARGET_DIR
 	cd $MYDROID/out/target/product/zoom2
-	echo "Creating filesystem for SD card in $tARGET_DIR/myfs"
+	echo "Creating filesystem for SD card in $TARGET_DIR/myfs"
 	cp -rf root/* $TARGET_DIR/myfs
 	cp -rf system $TARGET_DIR/myfs
 	cp -rf data $TARGET_DIR/myfs
