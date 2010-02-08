@@ -1,6 +1,9 @@
 This repository contains scripts to automate 
 some tasks for TI Linux_25.x program:
 
+IMPORTANT: These scripts were originally design for donut releases (OMAP 3430 Zoom2)
+so their defaults are for donut builds.
+
 ***** android_setenv.sh *****
 This scripts contains environment variables required for
 building the different components for L25.x
