@@ -3,10 +3,11 @@
 
 usage () {
 	echo "Usage: build_android.sh <targets> [ nand | cp-nand -t <target_dir> | eclair]
-targets:[ uboot | xloader | kernel | afs | gfx | all ]
+targets:[ uboot | xloader | kernel | wifi | afs | gfx | all ]
 	uboot: builds u-boot
 	xloader: builds x-loader
 	kernel: builds kernel and its modules
+	wifi: builds WLAN driver
 	afs: builds Android File System
 	gfx: builds GFX DDK
 	all: builds all of the above targets
@@ -29,11 +30,13 @@ until [ -z "$1" ]; do
 	uboot) uboot=1;;
 	xloader) xloader=1;;
 	kernel) kernel=1;;
+	wifi) wifi=1;;
 	afs) afs=1;;
 	all)
 		uboot=1
 		xloader=1
 		kernel=1
+		wifi=1
 		afs=1
 		gfx=1
 		;;
@@ -42,7 +45,7 @@ until [ -z "$1" ]; do
 		nand=1
 		cpnand=1
 		;;
-	cp-nand) cpnand=1;;
+	cpnand) cpnand=1;;
 	eclair) eclair=1;;
 	-t)
 		shift
@@ -110,18 +113,22 @@ make distclean
 make zoom2_defconfig
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/kernel.log make uImage 2>&1 |tee $MYDROID/logs/kernel.log
 
+# Kernel modules
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/kernel_modules.log make modules 2>&1 |tee $MYDROID/logs/kernel_modules.log
 fi
 
-# Android File System build block
-if [ -n "$afs" ]; then
+# WLAN driver
+if [ -n "$wifi" ]; then
 cd $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux
 export ARCH=arm
 export HOST_PLATFORM=zoom2
 export KERNEL_DIR=$MYDROID/kernel/android-2.6.29
 make clean
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/wifi.log make 2>&1 |tee $MYDROID/logs/wifi.log
+fi
 
+# Android File System build block
+if [ -n "$afs" ]; then
 cd $MYDROID
 cp -f vendor/ti/zoom2/buildspec.mk.default buildspec.mk
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/AFS.log make -j4 >&1 |tee $MYDROID/logs/AFS.log
@@ -161,21 +168,27 @@ if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cp -fv root/init.omapzoom2.rc root/init.rc
 	sed -i 's/chmod 0660 \/dev\/ttyS0/#chmod 0660 \/dev\/ttyS0\//' root/init.rc
 	sed -i 's/chown radio radio \/dev\/ttyS0/#chown radio radio \/dev\/ttyS0/' root/init.rc
-	sed -i  's/#    mount yaffs2 mtd@system \/system$/mount yaffs2 mtd@system \/system/' root/init.rc
+	sed -i 's/#    mount yaffs2 mtd@system \/system$/mount yaffs2 mtd@system \/system/' root/init.rc
 	sed -i 's/#    mount yaffs2 mtd@userdata \/data nosuid nodev/     mount yaffs2 mtd@userdata \/data nosuid nodev/' root/init.rc
 	sed -i 's/#    mount yaffs2 mtd@cache \/cache nosuid nodev/     mount yaffs2 mtd@cache \/cache nosuid nodev/' root/init.rc
 	if [ -n "$gfx" ]; then echo "# Start of SGX driver
 service pvrsvr /system/bin/sh /rc.pvr start
 user root
 oneshot" >> root/init.rc; fi	
+	if [ -e $MYDROID/out/target/product/zoom2/system/lib/libsupllocationprovider.so	]; then
+		sed -i 's/system\/framework\/services.jar/system\/framework\/services.jar:\/system\/framework\/android.supl.jar/' root/init.rc
+	fi
 
-	if [ -z "$eclair" ]; then
+	if [ -z "$eclair" ] && [ -e $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan_drv.ko ]; then
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan* root
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/sdio.ko root
-	else
+	elif [ -e $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan_drv.ko ]; then
 		if [ ! -d system/etc/wifi ]; then mkdir -p system/etc/wifi; fi
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan* system/etc/wifi
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/config/tiwlan.ini system/etc/wifi
+		#copy bluetooth file to system root
+		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/bt_drv.ko $MYDROID/out/target/product/zoom2/root
+		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/st_drv.ko $MYDROID/out/target/product/zoom2/root
 	fi
 
 	cd $MYDROID; make -j4
@@ -203,6 +216,10 @@ if [ -n "$cpnand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	cp -rf root/* $TARGET_DIR/myfs
 	cp -rf system $TARGET_DIR/myfs
 	cp -rf data $TARGET_DIR/myfs
+	echo "Creating uMulti-2 kernel image"
+	cd $TARGET_DIR
+	if [ -e uMulti-2 ]; then rm -f uMulti-2; fi
+	sudo ./mkimage -A arm -O linux -T multi -C none -a 0x80008000 -e 0x80008000 -n 'RELEASE' -d ./zImage:./ramdisk.img uMulti-2
 	cd $TARGET_DIR/myfs
 	if [ -n "$eclair" ]; then
 		cp -f $MYDROID/vendor/ti/zoom2/omapzoom2-mmc.rc init.rc
