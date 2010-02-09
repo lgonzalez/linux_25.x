@@ -48,11 +48,6 @@ until [ -z "$1" ]; do
 	shift
 done
 
-if [ -z "$uboot" ] && [ -z "$xloader" ] && [ -z "$kernel" ] && [ -z "$afs" ] && [ -z "$wifi" ]
-then 
-	echo "No target selected"
-	usage
-fi
 
 while [[ ! $label =~ [[:alpha:]]+[[:digit:]]{2}.*\.[[:digit:]]{2} ]]; do
 	echo "No label or wrong label format, please type a correct label: "
