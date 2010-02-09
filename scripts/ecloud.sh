@@ -8,13 +8,15 @@
 #all=0
 
 usage () {
-	echo "Usage: ecloud.sh -l <build label> <targets>
-targets:[uboot|xloader|kernel|afs|all]
+	echo "Usage: ecloud.sh -l <build label> <targets> [eclair]
+targets:[uboot|xloader|kernel|wifi|afs|all]
 	uboot: builds u-boot
 	xloader: builds x-loader
 	kernel: builds kernel and its modules
+	wifi: builds WiFi
 	afs: builds Android File System
 	all: builds all of the above targets
+	eclair: use eclair history files
 label: [LXX.XX|LinuxXX.XX|Any_char(s)XX.XX]"
 	exit 64 # command line usage error
 }
@@ -29,13 +31,16 @@ until [ -z "$1" ]; do
 	uboot) uboot=1;;
 	xloader) xloader=1;;
 	kernel) kernel=1;;
+	wifi) wifi=1;;
 	afs) afs=1;;
 	all)
 		uboot=1
 		xloader=1
 		kernel=1
+		wifi=1
 		afs=1
 		;;
+	eclair) eclair=1;;
 	*)
 		echo "Wrong argument: $1"
 		usage
@@ -43,7 +48,7 @@ until [ -z "$1" ]; do
 	shift
 done
 
-if [ -z "$uboot" ] && [ -z "$xloader" ] && [ -z "$kernel" ] && [ -z "$afs" ]
+if [ -z "$uboot" ] && [ -z "$xloader" ] && [ -z "$kernel" ] && [ -z "$afs" ] && [ -z "$wifi" ]
 then 
 	echo "No target selected"
 	usage
@@ -86,7 +91,11 @@ EC_CLASS=android
 EC_MAXAGENTS=12
 #EC_ROOT=$JAVA_HOME/bin:/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 EC_ROOT=/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison:/etc/alternatives
-EC_HISTORYDIR=/home/$USER/emake_history
+if [ -n "$eclair" ]; then 
+	EC_HISTORYDIR=/home/$USER/emake_history/eclair
+else
+	EC_HISTORYDIR=/home/$USER/emake_history/donut
+fi
 EC_BUILD_LBL=$label
 EC_OPTS="
 --emake-cm=$EC_MANAGER \
@@ -134,8 +143,8 @@ $EC_OPTS \
 --emake-historyfile=$EC_HISTORYDIR/emake_modules.data $@ modules 2>&1 |tee $MYDROID/logs/emake_modules.out
 fi
 
-# Android File System build block
-if [ -n "$afs" ]; then
+# WiFi build blocK
+if [ -n "$wifi" ]; then
 cd $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux
 export ARCH=arm
 export HOST_PLATFORM=zoom2
@@ -145,7 +154,10 @@ make clean
 $EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build.xml \
 --emake-historyfile=$EC_HISTORYDIR/emake_wifi.data $@ 2>&1 |tee $MYDROID/logs/emake_wifi.out
+fi
 
+# Android File System build block
+if [ -n "$afs" ]; then
 cd $MYDROID
 cp -f vendor/ti/zoom2/buildspec.mk.default buildspec.mk
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_AFS.out emake \
