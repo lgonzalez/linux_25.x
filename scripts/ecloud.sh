@@ -158,6 +158,5 @@ cp -f vendor/ti/zoom2/buildspec.mk.default buildspec.mk
 /usr/bin/time -f "Time taken to run command:\n\treal: %E \n\tuser: %U \n\tsystem: %S\n\n" -a -o $MYDROID/logs/emake_AFS.out emake \
 $EC_OPTS \
 --emake-annofile=$MYDROID/logs/emake_build_AFS.xml \
---emake-annoupload=1 \
 --emake-historyfile=$EC_HISTORYDIR/emake_AFS.data $@ 2>&1 |tee $MYDROID/logs/emake_AFS.out
 fi
