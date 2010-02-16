@@ -8,7 +8,7 @@
 #all=0
 
 usage () {
-	echo "Usage: ecloud.sh -l <build label> <targets> [eclair]
+	echo "Usage: ecloud.sh -l <build label> <targets> <android_rel>
 targets:[uboot|xloader|kernel|wifi|afs|all]
 	uboot: builds u-boot
 	xloader: builds x-loader
@@ -16,7 +16,9 @@ targets:[uboot|xloader|kernel|wifi|afs|all]
 	wifi: builds WiFi
 	afs: builds Android File System
 	all: builds all of the above targets
+android rel:
 	eclair: use eclair history files
+	donut: use donut history files
 label: [LXX.XX|LinuxXX.XX|Any_char(s)XX.XX]"
 	exit 64 # command line usage error
 }
@@ -40,7 +42,8 @@ until [ -z "$1" ]; do
 		wifi=1
 		afs=1
 		;;
-	eclair) eclair=1;;
+	eclair) android_rel=eclair;;
+	donut) android_rel=donut;;
 	*)
 		echo "Wrong argument: $1"
 		usage
@@ -52,6 +55,13 @@ done
 while [[ ! $label =~ [[:alpha:]]+[[:digit:]]{2}.*\.[[:digit:]]{2} ]]; do
 	echo "No label or wrong label format, please type a correct label: "
 	read label
+done
+
+while [ "$android_rel" != "donut" ] && [ "$android_rel" != "eclair" ]; do
+	echo "Android release not specified. Please type one of the following:
+	* eclair
+	* donut"
+	read android_rel
 done
 
 if [ ! -d .repo ]; then
@@ -86,9 +96,9 @@ EC_CLASS=android
 EC_MAXAGENTS=12
 #EC_ROOT=$JAVA_HOME/bin:/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 EC_ROOT=/home/$USER/bin:$MYDROID:$TOOL_CHAIN_HOME:/usr/bin:/usr/sbin:/usr/lib:/usr/include:/usr/share/bison:/etc/alternatives
-if [ -n "$eclair" ]; then 
+if [ "$android_rel" == "eclair" ]; then 
 	EC_HISTORYDIR=/home/$USER/emake_history/eclair
-else
+elif [ "$android_rel" == "donut" ]; then
 	EC_HISTORYDIR=/home/$USER/emake_history/donut
 fi
 EC_BUILD_LBL=$label
