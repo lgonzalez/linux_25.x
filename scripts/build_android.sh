@@ -171,10 +171,6 @@ if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 	sed -i 's/#    mount yaffs2 mtd@system \/system$/mount yaffs2 mtd@system \/system/' root/init.rc
 	sed -i 's/#    mount yaffs2 mtd@userdata \/data nosuid nodev/     mount yaffs2 mtd@userdata \/data nosuid nodev/' root/init.rc
 	sed -i 's/#    mount yaffs2 mtd@cache \/cache nosuid nodev/     mount yaffs2 mtd@cache \/cache nosuid nodev/' root/init.rc
-	if [ -n "$gfx" ]; then echo "# Start of SGX driver
-service pvrsvr /system/bin/sh /rc.pvr start
-user root
-oneshot" >> root/init.rc; fi	
 	if [ -e $MYDROID/out/target/product/zoom2/system/lib/libsupllocationprovider.so	]; then
 		sed -i 's/system\/framework\/services.jar/system\/framework\/services.jar:\/system\/framework\/android.supl.jar/' root/init.rc
 	fi
