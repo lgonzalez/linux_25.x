@@ -4,8 +4,9 @@ EMAKEDATA 6
 # Do not edit the contents by hand.
 #
 # ROOTS:
-#   /home/lgonzalez/bin
-#   /home/lgonzalez/mnt/linux/25E.15/mydroid
+#   /data/L25.x/builds/validation/25E.16/mydroid
+#   /etc/alternatives
+#   /home/x0068941/bin
 #   /usr/bin
 #   /usr/include
 #   /usr/lib
@@ -47,6 +48,8 @@ serial-deps:
 4 2 4 3 8 1 4 2 6 3 -1  
 4 2 4 3 9 1 4 2 6 3 -1  
 4 2 10 3 11 1 2 2 12  
+2 3 0 3 2 3 1  2 3 2  2 3 3  
+4 3 10 3 11 1 2 3 12  
 
 prereqs:
 

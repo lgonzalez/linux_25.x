@@ -4,8 +4,9 @@ EMAKEDATA 6
 # Do not edit the contents by hand.
 #
 # ROOTS:
-#   /home/lgonzalez/bin
-#   /home/lgonzalez/mnt/linux/25E.15/mydroid
+#   /data/L25.x/builds/validation/25E.16/mydroid
+#   /etc/alternatives
+#   /home/x0068941/bin
 #   /usr/bin
 #   /usr/include
 #   /usr/lib
@@ -71,6 +72,14 @@ jobs:
 0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
 0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
 0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/L25.x/builds/25E.16/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/L25.x/builds/25E.16/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
+0 0 0 _module_/data/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
 0 0 0 _module_/data/lgonzalez/L25.x/builds/L25.14/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
 0 0 1 system/wlan/ti/wilink_6_1/stad/build/linux/../../../stad/src/Ctrl_Interface/CmdHndlr.o
 0 0 1 system/wlan/ti/wilink_6_1/platforms/os/common/build/linux/../../../../../stad/src/Ctrl_Interface/CmdHndlr.o
@@ -82,6 +91,13 @@ jobs:
 0 0 0 _module_/data/lgonzalez/L25.x/builds/goldenrepo_eclair/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
 0 0 0 _module_/home/lgonzalez/mnt/linux/25E.15/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
 0 0 0 _module_/media/integration/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/lgonzalez/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/L25.x/builds/community/25.14M1/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/L25.x/builds/25E.16/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/L25.x/builds/25E.15/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/L25.x/builds/validation/25E.16/mydroid/system/wlan/ti/wilink_6_1/stad/build/linux
+0 0 0 _module_/data/L25.x/builds/validation/25E.16/mydroid/system/wlan/ti/wilink_6_1/platforms/os/common/build/linux
+0 0 0 _module_/data/L25.x/builds/validation/25E.16/mydroid/system/wlan/ti/wilink_6_1/platforms/os/linux/build
 
 serial-deps:
 4 0 0 1 1 16 8 0 2 2 3 3 4 3 -1  8 0 2 2 3 3 4 3 5  8 0 6 4 7 3 8 3 -1  8 0 6 4 7 3 8 3 9  8 0 2 2 3 3 10 3 -1  8 0 2 2 3 3 10 3 5  8 0 6 4 7 3 11 3 -1  8 0 6 4 7 3 11 3 9  8 0 2 2 3 3 12 3 -1  8 0 2 2 3 3 12 3 5  8 0 6 4 7 3 13 3 -1  8 0 6 4 7 3 13 3 9  8 0 2 2 3 3 14 3 -1  8 0 2 2 3 3 14 3 5  8 0 6 4 7 3 15 3 -1  8 0 6 4 7 3 15 3 9  
@@ -101,40 +117,66 @@ serial-deps:
 8 0 2 2 3 3 10 3 20 1 4 0 2 2 19  
 8 0 0 1 0 3 32 3 -2 1 4 0 0 1 1  
 8 0 6 4 7 3 11 3 -2 1 4 0 6 4 23  
-4 6 0 7 1 16 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 34  8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 34  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 34  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 34  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  
-8 6 0 7 0 9 43 9 44 2 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 45  
-8 6 2 8 3 9 33 9 45 1 4 6 2 8 19  
-4 6 2 8 19 8 8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  
-8 6 2 8 3 9 33 9 46 1 4 6 2 8 19  
-8 6 6 10 7 9 21 9 47 1 4 6 6 10 23  
-8 6 24 11 25 9 21 9 48 1 4 6 24 11 27  
-8 6 0 7 0 9 43 9 -2 1 4 6 0 7 1  
-8 6 6 10 7 9 35 9 -2 1 4 6 6 10 23  
-8 6 0 7 0 9 49 9 44 2 8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 45  
-8 6 2 8 3 9 37 9 45 1 4 6 2 8 19  
-8 6 2 8 3 9 37 9 46 1 4 6 2 8 19  
-8 6 0 7 0 9 49 9 -2 1 4 6 0 7 1  
-8 6 6 10 7 9 38 9 -2 1 4 6 6 10 23  
-8 6 0 7 0 9 50 9 44 2 8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 45  
-8 6 2 8 3 9 39 9 45 1 4 6 2 8 19  
-8 6 2 8 3 9 39 9 46 1 4 6 2 8 19  
-8 6 0 7 0 9 50 9 -2 1 4 6 0 7 1  
-8 6 6 10 7 9 40 9 -2 1 4 6 6 10 23  
-8 6 0 7 0 9 51 9 44 2 8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 45  
-8 6 2 8 3 9 41 9 45 1 4 6 2 8 19  
-8 6 2 8 3 9 41 9 46 1 4 6 2 8 19  
+4 6 0 7 1 36 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 34  8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 34  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 34  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 34  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  8 6 2 8 3 9 43 9 -1  8 6 2 8 3 9 43 9 34  8 6 6 10 7 9 44 9 -1  8 6 6 10 7 9 44 9 36  8 6 2 8 3 9 45 9 -1  8 6 2 8 3 9 45 9 34  8 6 6 10 7 9 46 9 -1  8 6 6 10 7 9 46 9 36  8 6 2 8 3 9 47 9 -1  8 6 2 8 3 9 47 9 34  8 6 6 10 7 9 48 9 -1  8 6 6 10 7 9 48 9 36  8 6 2 8 3 9 49 9 -1  8 6 2 8 3 9 49 9 34  8 6 6 10 7 9 50 9 -1  8 6 6 10 7 9 50 9 36  8 6 2 8 3 9 67 9 -1  8 6 2 8 3 9 67 9 34  8 6 6 10 7 9 68 9 -1  8 6 6 10 7 9 68 9 36  
+8 6 0 7 0 9 51 9 52 2 8 6 2 8 3 9 33 9 -1  8 6 2 8 3 9 33 9 53  
+8 6 2 8 3 9 33 9 53 1 4 6 2 8 19  
+4 6 2 8 19 18 8 6 6 10 7 9 35 9 -1  8 6 6 10 7 9 35 9 36  8 6 6 10 7 9 38 9 -1  8 6 6 10 7 9 38 9 36  8 6 6 10 7 9 40 9 -1  8 6 6 10 7 9 40 9 36  8 6 6 10 7 9 42 9 -1  8 6 6 10 7 9 42 9 36  8 6 6 10 7 9 44 9 -1  8 6 6 10 7 9 44 9 36  8 6 6 10 7 9 46 9 -1  8 6 6 10 7 9 46 9 36  8 6 6 10 7 9 48 9 -1  8 6 6 10 7 9 48 9 36  8 6 6 10 7 9 50 9 -1  8 6 6 10 7 9 50 9 36  8 6 6 10 7 9 68 9 -1  8 6 6 10 7 9 68 9 36  
+8 6 2 8 3 9 33 9 54 1 4 6 2 8 19  
+8 6 6 10 7 9 21 9 55 1 4 6 6 10 23  
+8 6 24 11 25 9 21 9 56 1 4 6 24 11 27  
 8 6 0 7 0 9 51 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 35 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 57 9 52 2 8 6 2 8 3 9 37 9 -1  8 6 2 8 3 9 37 9 53  
+8 6 2 8 3 9 37 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 37 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 57 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 38 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 58 9 52 2 8 6 2 8 3 9 39 9 -1  8 6 2 8 3 9 39 9 53  
+8 6 2 8 3 9 39 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 39 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 58 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 40 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 59 9 52 2 8 6 2 8 3 9 41 9 -1  8 6 2 8 3 9 41 9 53  
+8 6 2 8 3 9 41 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 41 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 59 9 -2 1 4 6 0 7 1  
 8 6 6 10 7 9 42 9 -2 1 4 6 6 10 23  
-8 0 0 1 0 3 52 3 17 2 8 0 2 2 3 3 12 3 -1  8 0 2 2 3 3 12 3 18  
+8 0 0 1 0 3 60 3 17 2 8 0 2 2 3 3 12 3 -1  8 0 2 2 3 3 12 3 18  
 8 0 2 2 3 3 12 3 18 1 4 0 2 2 19  
 8 0 2 2 3 3 12 3 20 1 4 0 2 2 19  
-8 0 0 1 0 3 52 3 -2 1 4 0 0 1 1  
+8 0 0 1 0 3 60 3 -2 1 4 0 0 1 1  
 8 0 6 4 7 3 13 3 -2 1 4 0 6 4 23  
-8 0 0 1 0 3 53 3 17 2 8 0 2 2 3 3 14 3 -1  8 0 2 2 3 3 14 3 18  
+8 0 0 1 0 3 61 3 17 2 8 0 2 2 3 3 14 3 -1  8 0 2 2 3 3 14 3 18  
 8 0 2 2 3 3 14 3 18 1 4 0 2 2 19  
 8 0 2 2 3 3 14 3 20 1 4 0 2 2 19  
-8 0 0 1 0 3 53 3 -2 1 4 0 0 1 1  
+8 0 0 1 0 3 61 3 -2 1 4 0 0 1 1  
 8 0 6 4 7 3 15 3 -2 1 4 0 6 4 23  
+8 6 0 7 0 9 62 9 52 2 8 6 2 8 3 9 43 9 -1  8 6 2 8 3 9 43 9 53  
+8 6 2 8 3 9 43 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 43 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 62 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 44 9 -2 1 4 6 6 10 23  
+2 6 28 5 2 6 0  4 6 0 7 28  4 6 0 7 0  4 6 0 7 -4  2 6 -4  
+8 6 0 7 0 9 63 9 52 2 8 6 2 8 3 9 45 9 -1  8 6 2 8 3 9 45 9 53  
+8 6 2 8 3 9 45 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 45 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 63 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 46 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 64 9 52 2 8 6 2 8 3 9 47 9 -1  8 6 2 8 3 9 47 9 53  
+8 6 2 8 3 9 47 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 47 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 64 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 48 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 65 9 52 2 8 6 2 8 3 9 49 9 -1  8 6 2 8 3 9 49 9 53  
+8 6 2 8 3 9 49 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 49 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 65 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 50 9 -2 1 4 6 6 10 23  
+8 6 0 7 0 9 66 9 52 2 8 6 2 8 3 9 67 9 -1  8 6 2 8 3 9 67 9 53  
+8 6 2 8 3 9 67 9 53 1 4 6 2 8 19  
+8 6 2 8 3 9 67 9 54 1 4 6 2 8 19  
+8 6 0 7 0 9 66 9 -2 1 4 6 0 7 1  
+8 6 6 10 7 9 68 9 -2 1 4 6 6 10 23  
 
 prereqs:
 
