@@ -183,9 +183,12 @@ if [ -n "$nand" ] && [ -d $MYDROID/out/target/product/zoom2 ]; then
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/platforms/os/linux/tiwlan* system/etc/wifi
 		cp -fv $MYDROID/system/wlan/ti/wilink_6_1/config/tiwlan.ini system/etc/wifi
 		#copy bluetooth file to system root
-		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/bt_drv.ko $MYDROID/out/target/product/zoom2/root
-		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/st_drv.ko $MYDROID/out/target/product/zoom2/root
+		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/bt_drv.ko root
+		cp -fv $MYDROID/kernel/android-2.6.29/drivers/misc/ti-st/st_drv.ko root
 	fi
+	
+	# copy kernel USB and BT modules
+	cp -pf $MYDROID/kernel/android-2.6.29/drivers/usb/gadget/*.ko root
 
 	cd $MYDROID; make -j4
 elif [ ! -d out/target/product/zoom2 ] && [ -n "$nand" ]; then
